@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b111b">
+  <meta name="description" content="مدير الوسائط على Android وiPhone وWindows وmacOS وLinux — MADA Anywhere">
+  <title>MADA Anywhere — حمّل ما تحب</title>
+  <link rel="icon" type="image/png" href="./icon-192.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-symbol"><svg viewBox="0 0 40 40" fill="none"><path d="M20 8v17m0 0-7-7m7 7 7-7" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 30h20" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg></span><span class="brand-text"><strong>MADA<span>Anywhere</span></strong><small>مساحتك لكل الوسائط</small></span></div>
+      <p class="nav-kicker">مساحة العمل</p>
+      <nav class="navigation" aria-label="القائمة الرئيسية">
+        <button class="nav-btn active" data-tab="home"><span class="nav-icon">⌂</span><span>الرئيسية</span><span class="nav-chevron">‹</span></button>
+        <button class="nav-btn" data-tab="downloads"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 20h16"/></svg></span><span>التنزيلات</span><span class="count-bubble" id="downloadCount">0</span></button>
+        <button class="nav-btn" data-tab="settings"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M10 4h4l.8 2.3 2 .9 2.3-1.1 2 3.5-2 1.8v2.3l2 1.8-2 3.5-2.3-1.1-2 .9L14 21h-4l-.8-2.3-2-.9-2.3 1.1-2-3.5 2-1.8v-2.3l-2-1.8 2-3.5 2.3 1.1 2-.9L10 4Z"/><circle cx="12" cy="12.5" r="3"/></svg></span><span>الإعدادات</span></button>
+      </nav>
+      <div class="side-tip">
+        <div class="side-tip-icon">✦</div>
+        <strong>الرابط يكفي!</strong>
+        <p>انسخ رابط فيديو أو صوت متاح، ثم اختر الصيغة والجودة التي تناسبك.</p>
+      </div>
+      <div class="side-bottom"><span class="online-dot" id="serverDot"></span><span id="serverLabel">جارٍ الاتصال بالمحرك...</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-title"><span class="eyebrow">YOUR MEDIA, YOUR WAY</span><h1 id="pageTitle">أهلًا بك في MADA <span class="wave">✦</span></h1></div>
+        <div class="top-actions"><span class="top-chip"><span class="pulsing-dot"></span> تطبيق متعدد المنصات</span><button id="themeBtn" class="icon-button" aria-label="تغيير الوضع الليلي" title="تغيير المظهر"><svg viewBox="0 0 24 24"><path d="M19 15.5A8 8 0 0 1 8.5 5a8 8 0 1 0 10.5 10.5Z"/></svg></button></div>
+      </header>
+
+      <section class="tab-panel" id="homePanel">
+        <section class="hero">
+          <div class="hero-orb hero-orb-1"></div><div class="hero-orb hero-orb-2"></div>
+          <div class="hero-copy"><span class="pill">✦ <span>تنزيل أسهل. جودة أعلى. حرية أكثر.</span></span><h2>كل محتواك المفضل،<br><em>في مكان واحد.</em></h2><p>ألصق رابط الفيديو أو ابحث عن مقطع، ثم نزّله بالصيغة والجودة التي تختارها.</p></div>
+          <div class="hero-art" aria-hidden="true"><div class="float-card card-back"><div class="mock-play">▶</div><div class="mock-line"></div></div><div class="float-card card-front"><div class="circle-download">↓</div><span class="float-line wide"></span><span class="float-line"></span><div class="float-progress"><div></div></div></div><div class="float-star">✦</div></div>
+        </section>
+
+        <section class="workspace">
+          <div class="section-heading"><div><span class="mini-eyebrow">ابدأ من هنا</span><h3>ماذا تريد أن تحمّل اليوم؟</h3></div><span class="hint-label">بدون حساب • بدون إعلانات داخل التطبيق</span></div>
+          <form id="lookupForm" class="lookup-form">
+            <div class="lookup-input"><span class="lookup-link-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.3 1.3M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.3-1.3"/></svg></span><input id="urlInput" autocomplete="off" aria-label="رابط فيديو أو عبارة بحث" type="text" placeholder="الصق رابط فيديو هنا... أو اكتب اسم مقطع للبحث"><button type="button" id="pasteBtn" class="paste-btn" title="لصق من الحافظة">لصق</button></div>
+            <button class="primary-btn" id="lookupBtn" type="submit"><span id="lookupBtnIcon">↗</span><span id="lookupBtnText">استعراض</span></button>
+          </form>
+          <div class="supported"><span>روابط من مواقع يدعمها المحرك:</span><div class="site-list"><span><i class="site-icon yt">▶</i> YouTube</span><span><i class="site-icon tt">♪</i> TikTok</span><span><i class="site-icon ig">◎</i> Instagram</span><span><i class="site-icon fb">f</i> Facebook</span><span><i class="site-icon vm">v</i> Vimeo</span><span class="etc">وغيرها كثير</span></div></div>
+        </section>
+
+        <section class="results-section hidden" id="resultSection" aria-live="polite"><div class="section-heading"><div><span class="mini-eyebrow" id="resultEyebrow">استعراض الوسائط</span><h3 id="resultHeading">نتيجة الرابط</h3></div><button class="text-btn" id="clearResults">إغلاق ×</button></div><div id="results"></div></section>
+
+        <section class="benefits-section"><div class="section-heading"><div><span class="mini-eyebrow">لماذا MADA؟</span><h3>كل ما تحتاجه، ببساطة</h3></div></div>
+          <div class="benefits-grid"><div class="benefit"><div class="benefit-icon purple">◈</div><strong>خيارات جودة متنوعة</strong><p>اختر من عدة دقات متاحة حسب المصدر، حتى 4K عند توفرها.</p></div><div class="benefit"><div class="benefit-icon green">♫</div><strong>تحويل الصوت إلى MP3</strong><p>استخرج الصوت من الفيديو عبر FFmpeg عندما يكون مُثبتًا.</p></div><div class="benefit"><div class="benefit-icon orange">⇩</div><strong>تنزيلات مستمرة</strong><p>تابع تقدّم التنزيلات وسجّل الملفات في مكان واحد.</p></div></div>
+        </section>
+      </section>
+
+      <section class="tab-panel hidden" id="downloadsPanel"><div class="section-heading downloads-heading"><div><span class="mini-eyebrow">مكتبتك الخاصة</span><h3>ملفاتي وتنزيلاتي</h3></div><button class="outline-btn" id="refreshBtn">↻ تحديث</button></div><div class="stats-grid"><div class="stat"><span>اكتملت</span><strong id="statDone">0</strong><small>جاهزة للتشغيل</small></div><div class="stat"><span>قيد التنفيذ</span><strong id="statActive">0</strong><small>تنزيلات نشطة أو منتظرة</small></div><div class="stat"><span>الإجمالي</span><strong id="statAll">0</strong><small>عمليات محفوظة</small></div></div><div class="downloads-toolbar"><h3>سجل التنزيلات</h3><div class="filter-buttons"><button class="filter active" data-filter="all">الكل</button><button class="filter" data-filter="active">نشطة</button><button class="filter" data-filter="completed">مكتملة</button></div></div><div id="jobsList"></div></section>
+
+      <section class="tab-panel hidden" id="settingsPanel"><div class="section-heading"><div><span class="mini-eyebrow">تخصيص البرنامج</span><h3>الإعدادات والمعلومات</h3></div></div><div class="settings-grid"><div class="setting-card"><div class="setting-icon">⚙</div><h4>محرك التنزيل</h4><p id="engineStatus">جارٍ فحص المحرك...</p><p id="ffmpegStatus">جارٍ فحص FFmpeg...</p></div><div class="setting-card"><div class="setting-icon">▣</div><h4>مكان الملفات</h4><div class="setting-path" id="downloadDir">—</div><p>هذا المجلد هو المكان الذي تحفظ فيه الملفات النهائية على جهازك.</p></div><div class="setting-card"><div class="setting-icon">◐</div><h4>المظهر</h4><p>يمكنك تغيير تصميم التطبيق بضغطة واحدة.</p><button class="outline-btn" id="settingsThemeBtn">تبديل الوضع الفاتح / الداكن</button></div><div class="setting-card connection-card"><div class="setting-icon">⌁</div><h4>الاتصال من أي جهاز</h4><p>للكمبيوتر والهاتف: يعمل تلقائيًا مع المحرك المحلي. للاستخدام من iPhone أو شبكة أخرى، أدخل عنوان محرك HTTPS المحمي برمز وصول.</p><label for="apiBaseInput">عنوان المحرك (اختياري)</label><input id="apiBaseInput" class="setting-input" type="url" placeholder="https://your-backend.example.com" dir="ltr" autocomplete="off"><label for="apiTokenInput">رمز الوصول (يُحفظ خلال هذه الجلسة فقط)</label><input id="apiTokenInput" class="setting-input" type="password" placeholder="MADA_API_TOKEN" dir="ltr" autocomplete="off"><button id="saveConnectionBtn" class="outline-btn" type="button">حفظ واختبار الاتصال</button><p id="connectionHelp">تحتاج الخدمة البعيدة إلى إعداد منفصل. لا تضع رمز الوصول في GitHub.</p></div><div class="setting-card"><div class="setting-icon">ⓘ</div><h4>كيف يعمل؟</h4><p>يستخدم yt-dlp لاستخراج الوسائط من المواقع المدعومة. تختلف النتائج حسب المصدر ولا يدعم تجاوز DRM أو المحتوى المحمي.</p></div></div><div class="info-strip">استخدم التطبيق فقط لتنزيل المحتوى الذي تملكه أو لديك إذن بحفظه. بعض المواقع تقيّد التنزيل وفق شروطها.</div></section>
+
+      <footer class="footer"><span>MADA Anywhere © 2026</span><span>متاح على Windows • macOS • Linux • Android • iPhone عبر PWA وخادم تنزيل</span></footer>
+    </main>
+
+    <nav class="mobile-nav" aria-label="التنقل السريع"><button class="mobile-btn active" data-tab="home"><span>⌂</span>الرئيسية</button><button class="mobile-btn" data-tab="downloads"><span>⇩</span>التنزيلات</button><button class="mobile-btn" data-tab="settings"><span>⚙</span>الإعدادات</button></nav>
+  </div>
+
+  <div id="downloadDialog" class="dialog-overlay hidden"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><button class="dialog-x" id="closeDialog" aria-label="إغلاق">✕</button><div class="dialog-media"><img id="dialogThumb" alt="صورة مصغرة للمقطع"><div><span class="mini-eyebrow">تنزيل محتوى</span><h3 id="dialogTitle">عنوان المقطع</h3><p id="dialogSub">—</p></div></div><div class="dialog-field"><label for="formatSelect">صيغة الملف</label><div class="format-choice"><button type="button" class="format-pill selected" data-format="mp4">▶ فيديو MP4</button><button type="button" class="format-pill" data-format="mp3">♫ صوت MP3</button><button type="button" class="format-pill" data-format="m4a">♪ صوت M4A</button></div></div><div class="dialog-field" id="qualityWrapper"><label for="qualitySelect">الجودة</label><select id="qualitySelect"><option value="best">أعلى جودة متاحة</option><option value="2160">4K / 2160p</option><option value="1440">2K / 1440p</option><option value="1080">Full HD / 1080p</option><option value="720" selected>HD / 720p</option><option value="480">480p</option><option value="360">360p</option></select><small>يحدد البرنامج أفضل جودة متاحة لا تتجاوز اختيارك، وقد تختلف الصيغة الفعلية حسب المصدر.</small></div><div class="dialog-notice" id="dialogNotice">يمكنك متابعة التنزيل في تبويب «التنزيلات».</div><button id="confirmDownload" class="primary-btn dialog-confirm">↓ بدء التنزيل</button></div></div>
+  <div id="toastArea" class="toast-area" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>

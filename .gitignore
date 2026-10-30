@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+jobs.json
+jobs.tmp
+.DS_Store
+node_modules/
+media/
+Downloads/
